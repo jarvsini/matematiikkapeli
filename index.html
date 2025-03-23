@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matematiikkapeli</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body>
+    <main>
+        <!-- Tason valinta -->
+        <div id="aloitusnakyma">
+            <h1>Va-lit-se ta-so</h1>
+            <div class="taso">
+                <button id="taso1" onclick="aloitaPeli(1)">&#128929;</button>
+                <p>Yh-teen-las-kut lu-vuil-la 1&#8211;10</p>
+            </div>
+            <div class="taso">
+                <button id="taso2" onclick="aloitaPeli(2)">&#128929;</button>
+                <p>Yh-teen-las-kut lu-vuil-la 1&#8211;20</p>
+            </div>
+            <div class="taso">
+                <button id="taso3" onclick="aloitaPeli(3)">&#8722;</button>
+                <p>Vä-hen-nys-las-kut lu-vuil-la 1&#8211;10</p>
+            </div>
+        </div>
+
+        <!-- Peli -->
+        <div id="pelinakyma" class="piilossa">
+            <div id="ylapalkki">
+                <button onclick="toggleFullScreen()">
+                    <span id="fullscreen-ikoni" class="material-symbols-outlined">open_in_full</span>
+                </button>
+                <button onclick="location.reload()">
+                    <span id="close-ikoni" class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <h2 id="kysymys"></h2>
+            <div id="vastausvaihtoehdot"></div>
+            <button id="vihje-painike" onclick="naytaVihje()"><p id="suurennuslasi">&#128269;</p> Vih-je</button>
+            <div id="vihje" class="piilossa"></div>
+            <div id="palaute"></div>
+            <button id="seuraava-painike" class="piilossa" onclick="seuraavaTehtava()">
+                <span class="material-symbols-outlined">arrow_forward_ios</span>
+            </button>
+            
+
+            <div id="edistyminen"></div>
+        </div>
+
+        <!-- Pelin lopetus -->
+        <div id="lopetusnakyma" class="piilossa">
+            <p>O-let rat-kais-sut kaik-ki teh-tä-vät.</p>
+            <h2>Hie-no-a!</h2>
+            <button onclick="location.reload()">PE-LAA UU-DEL-LEEN</button>
+        </div>
+
+    </main>
+<script src="math-game.js"></script>
+</body>
+</html>

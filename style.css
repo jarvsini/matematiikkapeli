@@ -1,0 +1,211 @@
+body {
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    font-family: Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #cdc7ff;
+}
+
+main {
+    background-color: white;
+    padding: 2rem;
+    margin: 1rem;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    max-width: 900px;
+    width: 80%;
+    min-width: 300px;
+    min-height: 90vh;
+}
+
+.piilossa {
+    display: none !important;
+}
+
+#aloitusnakyma {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    padding: 1rem;
+}
+
+.taso {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.taso button {
+    height: clamp(3.2rem, 10vw, 4.5rem);
+    width: clamp(3.2rem, 10vw, 4.5rem);
+    min-width: 3.2rem;
+    min-height: 3.2rem;
+    border-radius: 20%;
+    cursor: pointer;
+    font-size: clamp(2rem, 5vw, 3rem);
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.45);
+    transition: all 0.2s;
+}
+
+.taso button:hover {
+    background-color: rgb(245, 180, 255);
+    border-style: none;
+    transform: scale(1.2);
+}
+
+
+#taso1 { background-color: rgb(113, 245, 108);}
+#taso2 { background-color: rgb(52, 226, 238);}
+#taso3 { background-color: rgb(255, 70, 122);}
+
+#pelinakyma {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    position: relative;
+    gap: 2rem;
+}
+
+#ylapalkki {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1.5rem;
+}
+
+#ylapalkki button {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    padding: 0.4rem;
+    margin: 0.5rem;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+#ylapalkki button:hover {
+    background-color: rgba(240, 240, 240, 1);
+    transform: scale(1.1);
+}
+
+#fullscreen-ikoni {
+    color: royalblue;
+    font-size: clamp(2rem, 7vw, 5rem);
+}
+#close-ikoni {
+    color: crimson;
+    font-weight: bold;
+    font-size: clamp(2rem, 7vw, 5rem);
+}
+
+#kysymys {
+    font-size: clamp(1.6rem, 5vw, 3.5rem);
+    border: solid rgb(187, 184, 184);
+    border-radius: 1rem;
+    padding: 1rem 3rem 1rem 1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+#vastausvaihtoehdot button {
+    height: clamp(3.2rem, 10vw, 5.2rem);
+    width: clamp(3.2rem, 10vw, 5.2rem);
+    font-size: clamp(1.6rem, 5vw, 3rem);
+    text-align: center;
+    background-color: rgb(255, 121, 230);
+    border: 2px solid #000000;
+    border-radius: 20%;
+    cursor: pointer;
+    margin: 1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.45);
+    transition: all 0.2s;
+}
+
+#vastausvaihtoehdot button:hover {
+    background-color: rgb(245, 180, 255);
+    border-style: none;
+    transform: scale(1.2);
+}
+
+#vihje-painike {
+    font-size: 1.2rem;
+    background-color: rgb(219, 253, 219);
+    border: 2px solid #b0aaaa;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 1rem;
+    text-align: center;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+#suurennuslasi {
+    font-size: clamp(1.6rem, 5vw, 2.3rem);
+    margin: 0;
+}
+#vihje-painike:hover {
+    transform: scale(1.1);
+}
+@media (max-width: 650px) {
+    #vihje-painike {
+      padding: 1rem 1.1rem;
+    }
+}
+
+#vihje {
+    display: flex;
+    gap: 2.2rem;
+    min-height: 5rem;
+    max-width: 90%;
+    margin: 1rem;
+}
+.vihjekuva { font-size: clamp(1.2rem, 5vw, 3rem);}
+.haalea { opacity: 30%;}
+
+#palaute {
+    margin: 2rem;
+}
+
+#seuraava-painike {
+    background-color: rgb(66, 210, 66);
+    border: 2px solid #333;
+    border-radius: 20%;
+    cursor: pointer;
+    margin: 1rem;
+    padding: 1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+    transition: all 0.2s;
+}
+
+#seuraava-painike:hover {
+    border-style: none;
+    background-color: rgb(7, 137, 7);
+    transform: scale(1.1);
+}
+
+#seuraava-painike span {
+    color: #feed32;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: bold;
+}
+
+#edistyminen {
+    margin-top: auto;
+}
+.pallo {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+    border-radius: 50%;
+    background-color: lightgray;
+    transition: background-color 0.3s ease;
+}
+  
+.pallo.aktiivinen {
+    background-color: green;
+}
