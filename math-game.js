@@ -254,3 +254,8 @@ function paivitaIkoni() {
     ikoni.innerText = "open_in_full";
   }
 }
+
+// näytetään ikonot vasta kun fontti on ladattu
+document.fonts.ready.then(function () {
+  document.body.classList.add('font-ready');
+});
