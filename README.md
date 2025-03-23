@@ -1,6 +1,6 @@
 # Matematiikkapeli 1. luokkalaisille
 
-[jarvsini.github.io/matematiikkapeli](jarvsini.github.io/matematiikkapeli)
+[jarvsini.github.io/matematiikkapeli](https://jarvsini.github.io/matematiikkapeli)
 
 Tämä on yksinkertainen selainpohjainen peli, joka auttaa 1. luokkalaisia harjoittelemaan yhteen- ja vähennyslaskuja.
 
@@ -14,12 +14,12 @@ Pelin tarkoituksena on tehdä laskuja, valita oikea vastaus ja tarvittaessa pyyt
 
 ## 🎮 Ominaisuudet
 
-- Koko nayton tila
+- Koko näytön tila
 - Vihjeet esitetään kuvina (omena, kala, perhonen…)
 - Responsiivinen ulkoasu (toimii mobiilissa ja tabletilla)
 - Edistymisen seuranta väripalloilla
 - Pelin voi aloittaa uudelleen
-- Sulkemis- ja koko naytto -napit yläpalkissa
+- Sulkemis- ja koko näytto -painikkeet yläpalkissa
 - vastauksesta tulostuu palaute
 
 ## 📦 Teknologia
@@ -31,7 +31,7 @@ Pelin tarkoituksena on tehdä laskuja, valita oikea vastaus ja tarvittaessa pyyt
 
 ## 🧪 Suunnitelmissa tai ideoita:
 
-- Lisää tasoja tai vaikeustasoja; yksi taso jo tulossa: kertolaskut pienillä luvuilla
+- Lisää tasoja tai vaikeustasoja; yksi taso: kertolaskut pienillä luvuilla
 - Ääniefektit oikeista ja vääristä vastauksista
 - Pelihahmo tai animaatiota mukaan
 
