@@ -186,76 +186,52 @@ function paivitaPallo(indeksi) {
   }
 }
 
-function toggleKokoNaytto() {
-    const elem = document.documentElement;
-    const ikoni = document.getElementById("fullscreen-ikoni");
-  
-    if (!document.fullscreenElement) {
-      // Mennään koko näyttöön
-      if (elem.requestFullscreen) {
-        elem.requestFullscreen();
-      }
-      ikoni.innerText = "fullscreen_exit"; // Vaihda kuvake
-    } else {
-      // Poistutaan koko näytöstä
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      }
-      ikoni.innerText = "fullscreen"; // Vaihda kuvake takaisin
-    }
+function avaaKokoNaytto() {
+  const elem = document.documentElement;
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
   }
 
-  function toggleFullScreen() {
-    const elem = document.documentElement;
-    const ikoni = document.getElementById("fullscreen-ikoni");
-  
-    if (!document.fullscreenElement && 
-        !document.webkitFullscreenElement && 
-        !document.msFullscreenElement) {
-      
-      // Mennään koko näyttöön
-      if (elem.requestFullscreen) {
-        elem.requestFullscreen();
-      } else if (elem.webkitRequestFullscreen) {
-        elem.webkitRequestFullscreen(); // Safari
-      } else if (elem.msRequestFullscreen) {
-        elem.msRequestFullscreen(); // IE11
-      }
-  
-      ikoni.innerText = "close_fullscreen";
-    } else {
-      // Poistutaan koko näytöstä
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen(); // Safari
-      } else if (document.msExitFullscreen) {
-        document.msExitFullscreen(); // IE11
-      }
-  
-      ikoni.innerText = "open_in_full";
-    }
-  }
-  
-// kuunnellaan jos koko naytto suljetaan escillä:
-document.addEventListener("fullscreenchange", paivitaIkoni);
-document.addEventListener("webkitfullscreenchange", paivitaIkoni); // Safari
-document.addEventListener("msfullscreenchange", paivitaIkoni); // IE
-
-function paivitaIkoni() {
-  const ikoni = document.getElementById("fullscreen-ikoni");
-  if (
-    document.fullscreenElement ||
-    document.webkitFullscreenElement ||
-    document.msFullscreenElement
-  ) {
-    ikoni.innerText = "close_fullscreen";
-  } else {
-    ikoni.innerText = "open_in_full";
-  }
+  // Vaihdetaan napit
+  document.getElementById("avaa-koko-naytto").classList.add("piilossa");
+  document.getElementById("sulje-koko-naytto").classList.remove("piilossa");
 }
 
-// näytetään ikonot vasta kun fontti on ladattu
-document.fonts.ready.then(function () {
-  document.body.classList.add('font-ready');
-});
+function suljeKokoNaytto() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) { // Safari
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) { // IE11
+    document.msExitFullscreen();
+  }
+}
+  
+document.addEventListener("fullscreenchange", paivitaKokoNayttoNapit); //Chrome, Edge
+document.addEventListener("webkitfullscreenchange", paivitaKokoNayttoNapit); // Safari
+document.addEventListener("mozfullscreenchange", paivitaKokoNayttoNapit); // Firefox
+document.addEventListener("MSFullscreenChange", paivitaKokoNayttoNapit); // IE/Edge
+
+function paivitaKokoNayttoNapit() {
+  const onKokoNaytto = !!(
+    document.fullscreenElement ||
+    document.webkitFullscreenElement ||
+    document.mozFullScreenElement ||
+    document.msFullscreenElement
+  );
+
+  const avaa = document.getElementById("avaa-koko-naytto");
+  const sulje = document.getElementById("sulje-koko-naytto");
+
+  if (onKokoNaytto) {
+    avaa.classList.add("piilossa");
+    sulje.classList.remove("piilossa");
+  } else {
+    avaa.classList.remove("piilossa");
+    sulje.classList.add("piilossa");
+  }
+}

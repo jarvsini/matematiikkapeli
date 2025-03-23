@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matematiikkapeli</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 <body>
     <main>
@@ -13,15 +12,21 @@
         <div id="aloitusnakyma">
             <h1>Va-lit-se ta-so</h1>
             <div class="taso">
-                <button id="taso1" onclick="aloitaPeli(1)">&#128929;</button>
+                <button id="taso1" onclick="aloitaPeli(1)">
+                    <img src="assets/icons/add_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg">
+                </button>
                 <p>Yh-teen-las-kut lu-vuil-la 1&#8211;10</p>
             </div>
             <div class="taso">
-                <button id="taso2" onclick="aloitaPeli(2)">&#128929;</button>
+                <button id="taso2" onclick="aloitaPeli(2)">
+                    <img src="assets/icons/add_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg">
+                </button>
                 <p>Yh-teen-las-kut lu-vuil-la 1&#8211;20</p>
             </div>
             <div class="taso">
-                <button id="taso3" onclick="aloitaPeli(3)">&#8722;</button>
+                <button id="taso3" onclick="aloitaPeli(3)">
+                    <img src="assets/icons/remove_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg">
+                </button>
                 <p>Vä-hen-nys-las-kut lu-vuil-la 1&#8211;10</p>
             </div>
         </div>
@@ -29,11 +34,14 @@
         <!-- Peli -->
         <div id="pelinakyma" class="piilossa">
             <div id="ylapalkki">
-                <button onclick="toggleFullScreen()">
-                    <span id="fullscreen-ikoni" class="material-symbols-outlined">open_in_full</span>
+                <button id="avaa-koko-naytto" onclick="avaaKokoNaytto()">
+                    <img src="assets/icons/open_in_full_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg">
                 </button>
-                <button onclick="location.reload()">
-                    <span id="close-ikoni" class="material-symbols-outlined">close</span>
+                <button id="sulje-koko-naytto" class="piilossa" onclick="suljeKokoNaytto()">
+                    <img src="assets/icons/close_fullscreen_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg">
+                </button>
+                <button id="sulje-peli" onclick="location.reload()">
+                    <img src="assets/icons/close_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg">
                 </button>
             </div>
             <h2 id="kysymys"></h2>
@@ -42,7 +50,7 @@
             <div id="vihje" class="piilossa"></div>
             <div id="palaute"></div>
             <button id="seuraava-painike" class="piilossa" onclick="seuraavaTehtava()">
-                <span class="material-symbols-outlined">arrow_forward_ios</span>
+                <img src="assets/icons/arrow_right_alt_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg">
             </button>
             
 
