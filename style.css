@@ -264,9 +264,8 @@ main {
 }
   
 #kannustusviesti.poistuva {
-    opacity: 0;
-    transform: translateY(150%); /* Liukuu alaspäin */
-    transition: transform 5.2s ease, opacity 5.0s ease;
+    transform: translateX(100%) rotate(20deg) scale(0.4);
+    transition: transform 1.6s ease-in;
 }
 
 #kannustus-teksti {

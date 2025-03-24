@@ -275,7 +275,7 @@ function naytaKannustus(kuvapolku, viestiteksti) {
     setTimeout(() => {
       container.classList.add("piilossa");
       container.classList.remove("poistuva");
-    }, 5200);
+    }, 1600);
 
     document.removeEventListener("click", piilotaKannustus);
   }
