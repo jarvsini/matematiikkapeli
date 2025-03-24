@@ -12,21 +12,15 @@
         <div id="aloitusnakyma">
             <h1>Va-lit-se ta-so</h1>
             <div class="taso">
-                <button id="taso1" onclick="aloitaPeli(1)">
-                    <img src="assets/icons/add_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg">
-                </button>
+                <button id="taso1" onclick="aloitaPeli(1)">&plus;</button>
                 <p>Yh-teen-las-kut lu-vuil-la 1&#8211;10</p>
             </div>
             <div class="taso">
-                <button id="taso2" onclick="aloitaPeli(2)">
-                    <img src="assets/icons/add_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg">
-                </button>
+                <button id="taso2" onclick="aloitaPeli(2)">&plus;</button>
                 <p>Yh-teen-las-kut lu-vuil-la 1&#8211;20</p>
             </div>
             <div class="taso">
-                <button id="taso3" onclick="aloitaPeli(3)">
-                    <img src="assets/icons/remove_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg">
-                </button>
+                <button id="taso3" onclick="aloitaPeli(3)">&minus;</button>
                 <p>Vä-hen-nys-las-kut lu-vuil-la 1&#8211;10</p>
             </div>
         </div>
@@ -34,25 +28,19 @@
         <!-- Peli -->
         <div id="pelinakyma" class="piilossa">
             <div id="ylapalkki">
-                <button id="avaa-koko-naytto" onclick="avaaKokoNaytto()">
-                    <img src="assets/icons/open_in_full_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg">
-                </button>
-                <button id="sulje-koko-naytto" class="piilossa" onclick="suljeKokoNaytto()">
-                    <img src="assets/icons/close_fullscreen_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg">
-                </button>
-                <button id="sulje-peli" onclick="location.reload()">
-                    <img src="assets/icons/close_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg">
-                </button>
+                <button id="avaa-koko-naytto" onclick="avaaKokoNaytto()">&#x26F6;</button>
+                <button id="sulje-koko-naytto" class="piilossa" onclick="suljeKokoNaytto()">&#8889;</button>
+                <button id="sulje-peli" onclick="location.reload()">X</button>
             </div>
-            <h2 id="kysymys"></h2>
+            <div id="kysymys"></div>
             <div id="vastausvaihtoehdot"></div>
-            <button id="vihje-painike" onclick="naytaVihje()"><p id="suurennuslasi">&#128269;</p> Vih-je</button>
+            <button id="vihje-painike" onclick="naytaVihje()"><p id="suurennuslasi">&#128269;</p>vih-je</button>
             <div id="vihje" class="piilossa"></div>
-            <div id="palaute"></div>
-            <button id="seuraava-painike" class="piilossa" onclick="seuraavaTehtava()">
-                <img src="assets/icons/arrow_right_alt_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg">
-            </button>
-            
+            <div id="palaute1"></div>
+            <div id="palaute2" class="piilossa">
+                <h2>HY-VÄ!</h2>
+                <button id="seuraava-painike" onclick="seuraavaTehtava()">&rightarrow;</button>
+            </div>
 
             <div id="edistyminen"></div>
         </div>

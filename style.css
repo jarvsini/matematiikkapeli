@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+
 body {
-    font-size: clamp(1.2rem, 3vw, 1.4rem);
-    font-family: Verdana, sans-serif;
+    font-size: clamp(1.4rem, 3vw, 1.4rem);
+    font-family: "Fredoka", sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
@@ -10,7 +12,7 @@ body {
 }
 
 main {
-    background-color: rgb(250, 237, 237);
+    background-color:#fff0f0;
     padding: 2rem;
     margin: 1rem;
     border-radius: 20px;
@@ -32,6 +34,11 @@ main {
     padding: 1rem;
 }
 
+#aloitusnakyma h1 {
+    color: #9921c1;
+    font-weight: 700;
+}
+
 .taso {
     display: flex;
     gap: 1rem;
@@ -39,9 +46,16 @@ main {
 }
 
 .taso button {
+    border: 2px solid rgb(142, 139, 139);
+    padding: 0.5rem 1.2rem;
+    width: clamp(4rem, 6vw, 5rem);
+    height: clamp(4rem, 6vw, 5rem);
+    font-size: clamp(2rem, 4vw, 4rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 20%;
     cursor: pointer;
-    font-size: clamp(2rem, 5vw, 3rem);
     box-shadow: 0 2px 6px rgba(0,0,0,0.45);
     transition: all 0.5s;
 }
@@ -50,12 +64,6 @@ main {
     background-color: rgb(245, 180, 255);
     border-style: none;
     transform: scale(1.2);
-}
-
-.taso button img {
-    width: clamp(3rem, 6vw, 4rem);
-    height: auto;
-    padding-top: 0.5rem;
 }
 
 #taso1 { background-color: rgb(113, 245, 108);}
@@ -67,7 +75,7 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 80vh;
+    min-height: 90vh;
     position: relative;
     gap: 2rem;
 }
@@ -79,29 +87,55 @@ main {
     gap: 1.5rem;
 }
 
-#ylapalkki button {
+#avaa-koko-naytto,
+#sulje-koko-naytto {
     cursor: pointer;
-    background-color: rgba(234, 225, 225, 0.8);
+    width: clamp(4rem, 10vw, 5rem);
+    height: clamp(4rem, 10vw, 5rem);
+    font-size: clamp(2rem, 4vw, 2.7rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
+    background: none;
     border-radius: 50%;
-    padding: 0.4rem;
     transition: all 0.2s;
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
-#ylapalkki button:hover {
+#avaa-koko-naytto:hover,
+#sulje-koko-naytto:hover {
     background-color: rgba(240, 240, 240, 1);
     transform: scale(1.1);
 }
 
-#ylapalkki button img {
-    width: clamp(2rem, 5vw, 4rem);
+#sulje-peli {
+    color: rgb(205, 32, 32);
+    cursor: pointer;
+    width: clamp(4rem, 10vw, 5rem);
+    height: clamp(4rem, 10vw, 5rem);
+    font-size: clamp(2rem, 4vw, 2.7rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background: none;
+    border-radius: 50%;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+#sulje-peli:hover {
+    background-color: rgb(247, 119, 119);
+    color:#252222;
+    transform: scale(1.1);
 }
 
 #kysymys {
     font-size: clamp(1.6rem, 5vw, 3.5rem);
+    font-weight:400;
     border: solid rgb(187, 184, 184);
     border-radius: 1rem;
-    padding: 1rem 3rem 1rem 1rem;
+    padding: 1rem 2rem 1rem 1rem;
+    background-color: #e6f0ff;
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
@@ -110,7 +144,7 @@ main {
     width: clamp(3.2rem, 10vw, 5.2rem);
     font-size: clamp(1.6rem, 5vw, 3rem);
     text-align: center;
-    background-color: rgb(255, 121, 230);
+    background-color: #ff8ce2;
     border: 2px solid #000000;
     border-radius: 20%;
     cursor: pointer;
@@ -120,7 +154,7 @@ main {
 }
 
 #vastausvaihtoehdot button:hover {
-    background-color: rgb(245, 180, 255);
+    background-color: #d81ba9;
     border-style: none;
     transform: scale(1.2);
 }
@@ -154,23 +188,39 @@ main {
     display: flex;
     gap: 2.2rem;
     min-height: 5rem;
-    max-width: 90%;
+    max-width: 100%;
     margin: 1rem;
 }
-.vihjekuva { font-size: clamp(1.2rem, 5vw, 3rem);}
+.vihjekuva { font-size: clamp(2.2rem, 6vw, 4rem);}
 .haalea { opacity: 30%;}
 
-#palaute {
+#palaute1 {
     margin: 2rem;
+    font-size: clamp(1.9rem, 4vw, 4rem);
+}
+
+#palaute2 {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+    color: rgb(255, 166, 0);
+    font-size: clamp(2rem, 5vw, 4rem);
 }
 
 #seuraava-painike {
+    width: clamp(4rem, 10vw, 7rem);
+    height: clamp(4rem, 10vw, 7rem);
+    font-size: clamp(2rem, 5vw, 4rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.3rem 0 0.9rem 0;
     background-color: rgb(66, 210, 66);
-    border: 2px solid #333;
+    border: 2px solid #504d4d;
     border-radius: 20%;
     cursor: pointer;
     margin: 1rem;
-    padding: 1rem;
     box-shadow: 0 2px 6px rgba(0,0,0,0.35);
     transition: all 0.5s;
 }
@@ -178,6 +228,7 @@ main {
 #seuraava-painike:hover {
     border-style: none;
     background-color: rgb(7, 137, 7);
+    color: rgb(241, 241, 177);
     transform: scale(1.1);
 }
 

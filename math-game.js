@@ -3,6 +3,8 @@ let nykyinenTehtava = 0;
 let nykyinenTaso = 1;
 let tehtavat = [];
 
+let palauteAjastin = null; // Ajastin 'yritä uudelleen' tekstille ja ajastin täytyy nollata, jos pelaaja klikkailee nopeasti
+
 function aloitaPeli(taso) {
   nykyinenTaso = taso;
   nykyinenTehtava = 0;
@@ -12,6 +14,8 @@ function aloitaPeli(taso) {
 
   document.getElementById("aloitusnakyma").classList.add("piilossa");
   document.getElementById("pelinakyma").classList.remove("piilossa");
+
+  avaaKokoNaytto();
 }
 
 function generoiTehtavat(taso) {
@@ -108,12 +112,13 @@ function naytaTehtava() {
 
 function tarkistaVastaus(valittu) {
   const oikea = tehtavat[nykyinenTehtava].vastaus;
-  const vaihtoehdot = document.querySelectorAll("#vastausvaihtoehdot button");
+  const vaihtoehdot = document.querySelectorAll("#vastausvaihtoehdot button");  
 
   if (valittu === oikea) {
     paivitaPallo(nykyinenTehtava);
 
-    // Piilotetaan vastausvaihtoehdot ja vihje
+    // Piilotetaan vastausvaihtoehdot ja vihje ja 'yrita uudelleen'
+    document.getElementById("palaute1").innerText = "";
     document.getElementById("vastausvaihtoehdot").classList.add("piilossa");
     document.getElementById("vihje-painike").classList.add("piilossa");
     document.getElementById("vihje").classList.add("piilossa");
@@ -122,18 +127,28 @@ function tarkistaVastaus(valittu) {
     document.getElementById("kysymys").innerText = tehtavat[nykyinenTehtava].kysymys + valittu;
 
     // Näytä palaute ja seuraava-nappi
-    document.getElementById("palaute").innerText = "HY-VÄ!";
+    document.getElementById("palaute2").classList.remove("piilossa");
     document.getElementById("seuraava-painike").classList.remove("piilossa");
     
   } else {
     vaihtoehdot.forEach(btn => {
       if (parseInt(btn.innerText) === valittu) {
         btn.disabled = true;
-        btn.style.opacity = 0.5;
+        btn.style.opacity = 0.3;
       }
     });
-    const palaute = document.getElementById("palaute");
+    // Nollataan aiempin ajastin, jos olemassa
+    if (palauteAjastin !== null) {
+      clearTimeout(palauteAjastin);
+    }
+
+    const palaute = document.getElementById("palaute1");
     palaute.innerText = "Y-ri-tä uu-del-leen!";
+
+    palauteAjastin = setTimeout(() => {
+      palaute.innerText = "";
+      palauteAjastin = null; // Nollataan kun valmis
+    }, 3000); // Näkyy 3 sekuntia
   }
 }
 
@@ -159,7 +174,7 @@ function seuraavaTehtava() {
     }
   
     // Piilotetaan palaute ja seuraava-nappi
-    document.getElementById("palaute").innerText = "";
+    document.getElementById("palaute2").classList.add("piilossa");
     document.getElementById("seuraava-painike").classList.add("piilossa");
 
     // Näytetään uudelleen vastausvaihtoehdot ja vihjenappi
@@ -186,8 +201,10 @@ function paivitaPallo(indeksi) {
   }
 }
 
+// Koko näytöllä pelaaminen
+const elem = document.documentElement;
+
 function avaaKokoNaytto() {
-  const elem = document.documentElement;
   if (elem.requestFullscreen) {
     elem.requestFullscreen();
   } else if (elem.webkitRequestFullscreen) { /* Safari */
@@ -204,9 +221,9 @@ function avaaKokoNaytto() {
 function suljeKokoNaytto() {
   if (document.exitFullscreen) {
     document.exitFullscreen();
-  } else if (document.webkitExitFullscreen) { // Safari
+  } else if (document.webkitExitFullscreen) { /* Safari */
     document.webkitExitFullscreen();
-  } else if (document.msExitFullscreen) { // IE11
+  } else if (document.msExitFullscreen) { /* IE11 */
     document.msExitFullscreen();
   }
 }
