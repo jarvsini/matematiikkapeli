@@ -15,7 +15,7 @@ function aloitaPeli(taso) {
   document.getElementById("aloitusnakyma").classList.add("piilossa");
   document.getElementById("pelinakyma").classList.remove("piilossa");
 
-  avaaKokoNaytto();
+//  avaaKokoNaytto();
 }
 
 function generoiTehtavat(taso) {
@@ -199,6 +199,50 @@ function paivitaPallo(indeksi) {
   if (pallo) {
     pallo.classList.add("aktiivinen");
   }
+
+  if (indeksi === 4) {
+    kannustaPuolivalissa();
+  } else if (indeksi === 7) {
+    kannustaLoppusuoralla();
+  }
+}
+
+function kannustaPuolivalissa() {
+  const viestit = [
+    { teksti: "Puo-li-vä-lis-sä jo!", kuva: "images/koira.png"},
+    { teksti: "Hie-nos-ti me-nee!", kuva: "images/krokotiili.png"}
+  ];
+  naytaKannustus(viestit);
+}
+
+function kannustaLoppusuoralla() {
+  const viestit = [
+    { teksti: "Mel-kein val-mis-ta!", kuva: "images/koira.png"},
+    { teksti: "Lop-pu-suo-ra!", kuva: "images/krokotiili.png"}
+  ];
+  naytaKannustus(viestit);
+}
+
+function naytaKannustus(vaihtoehdot) {
+  const valinta = vaihtoehdot[Math.floor(Math.random() * vaihtoehdot.length)];
+  const viesti = document.getElementById("kannustusviesti");
+  const teksti = document.getElementById("kannustus-teksti");
+  const elain = document.getElementById("kannustus-elain");
+
+  elain.src = valinta.kuva;
+  teksti.innerText = valinta.teksti;
+  viesti.classList.remove("piilossa");
+
+  function piilotaKannustus() {
+    viesti.classList.add("piilossa");
+    document.removeEventListener("click", piilotaKannustus);
+  }
+
+  // piilotus käynnistyy, kun klikataan mitä tahansa
+  setTimeout(() => {
+    document.addEventListener("click", piilotaKannustus);
+  }, 100); // pieni viive, jotta alkuperäinen klik ei heti piilota  
+
 }
 
 // Koko näytöllä pelaaminen

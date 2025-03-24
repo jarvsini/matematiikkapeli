@@ -84,14 +84,14 @@ main {
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
 #avaa-koko-naytto,
 #sulje-koko-naytto {
     cursor: pointer;
-    width: clamp(4rem, 10vw, 5rem);
-    height: clamp(4rem, 10vw, 5rem);
+    width: clamp(3rem, 10vw, 5rem);
+    height: clamp(3rem, 10vw, 5rem);
     font-size: clamp(2rem, 4vw, 2.7rem);
     display: flex;
     justify-content: center;
@@ -111,8 +111,8 @@ main {
 #sulje-peli {
     color: rgb(205, 32, 32);
     cursor: pointer;
-    width: clamp(4rem, 10vw, 5rem);
-    height: clamp(4rem, 10vw, 5rem);
+    width: clamp(3rem, 10vw, 5rem);
+    height: clamp(3rem, 10vw, 5rem);
     font-size: clamp(2rem, 4vw, 2.7rem);
     display: flex;
     justify-content: center;
@@ -196,7 +196,7 @@ main {
 
 #palaute1 {
     margin: 2rem;
-    font-size: clamp(1.9rem, 4vw, 4rem);
+    font-size: clamp(1.4rem, 4vw, 2.8rem);
 }
 
 #palaute2 {
@@ -205,7 +205,7 @@ main {
     gap: 3rem;
     align-items: center;
     color: rgb(255, 166, 0);
-    font-size: clamp(2rem, 5vw, 4rem);
+    font-size: clamp(2rem, 5vw, 3rem);
 }
 
 #seuraava-painike {
@@ -220,7 +220,6 @@ main {
     border: 2px solid #504d4d;
     border-radius: 20%;
     cursor: pointer;
-    margin: 1rem;
     box-shadow: 0 2px 6px rgba(0,0,0,0.35);
     transition: all 0.5s;
 }
@@ -252,4 +251,35 @@ main {
   
 .pallo.aktiivinen {
     background-color: green;
+}
+
+#kannustusviesti {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 1000;
+}
+
+#kannustus-teksti {
+    font-size: clamp(1.2rem, 2.5vw, 1.9rem);
+    background-color: white;
+    border-style: dashed;
+    padding: 1rem 1.5rem;
+    border-radius: 20px;
+}
+#kannustusviesti img {
+    height: clamp(100px, 20vh, 400px);
+}
+@media (min-width: 1000px) {
+    #kannustusviesti img {
+        height: auto;
+        width: clamp(300px, 20vw, 150px);
+    }
+  
+    #kannustus-teksti {
+      padding: 1.5rem 2rem;
+    }
 }
