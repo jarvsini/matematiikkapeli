@@ -262,6 +262,12 @@ main {
     right: 1rem;
     z-index: 1000;
 }
+  
+#kannustusviesti.poistuva {
+    opacity: 0;
+    transform: translateY(150%); /* Liukuu alaspäin */
+    transition: transform 5.2s ease, opacity 5.0s ease;
+}
 
 #kannustus-teksti {
     font-size: clamp(1.2rem, 2.5vw, 1.9rem);
@@ -271,14 +277,12 @@ main {
     border-radius: 20px;
 }
 #kannustusviesti img {
-    height: clamp(100px, 20vh, 400px);
+    height: auto;
 }
 @media (min-width: 1000px) {
     #kannustusviesti img {
-        height: auto;
-        width: clamp(300px, 20vw, 150px);
+        margin-right: 10vw;
     }
-  
     #kannustus-teksti {
       padding: 1.5rem 2rem;
     }

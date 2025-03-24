@@ -15,7 +15,7 @@ function aloitaPeli(taso) {
   document.getElementById("aloitusnakyma").classList.add("piilossa");
   document.getElementById("pelinakyma").classList.remove("piilossa");
 
-//  avaaKokoNaytto();
+  avaaKokoNaytto();
 }
 
 function generoiTehtavat(taso) {
@@ -169,8 +169,7 @@ function seuraavaTehtava() {
       naytaTehtava(); // näyttää seuraavan tehtävän
     } else {
       // jos kaikki tehtävät tehty
-      document.getElementById("pelinakyma").classList.add("piilossa");
-      document.getElementById("lopetusnakyma").classList.remove("piilossa");
+      voitaPeli();
     }
   
     // Piilotetaan palaute ja seuraava-nappi
@@ -207,34 +206,77 @@ function paivitaPallo(indeksi) {
   }
 }
 
+function voitaPeli() {
+  document.getElementById("pelinakyma").classList.add("piilossa");
+  document.getElementById("aloitusnakyma").classList.add("piilossa");
+  document.getElementById("lopetusnakyma").classList.remove("piilossa");
+
+  for (let i = 0; i < 3; i++) {
+    setTimeout(() => {
+      confetti({
+          particleCount: 100,
+          spread: 120,
+          origin: { y: 0.4 }
+      });
+    }, i * 500);
+  }
+}
+
+// Kannustukset
+const puolivaliTekstit = [
+  "Puo-li-vä-li saa-vu-tet-tu!",
+  "Puo-li-vä-lis-sä jo!",
+  "Hie-nos-ti me-nee!",
+  "Jat-ka vain!",
+  "Si-nä o-saat!",
+  "Jo vii-si teh-ty!",
+  "Hy-vin su-juu!"
+];
+
+const loppusuoraTekstit = [
+  "Mel-kein val-mis-ta!",
+  "Lop-pu-suo-ra hää-möt-tää!",
+  "Vain muu-ta-ma jäl-jel-lä!",
+  "Tääl-lä as-ti jo!",
+  "Vain kak-si jäl-jel-lä!"
+];
+
 function kannustaPuolivalissa() {
-  const viestit = [
-    { teksti: "Puo-li-vä-lis-sä jo!", kuva: "images/koira.png"},
-    { teksti: "Hie-nos-ti me-nee!", kuva: "images/krokotiili.png"}
-  ];
-  naytaKannustus(viestit);
+  const kuva = arvoElainKuva();
+  const teksti = puolivaliTekstit[Math.floor(Math.random() * puolivaliTekstit.length)];
+  naytaKannustus(kuva, teksti);
 }
 
 function kannustaLoppusuoralla() {
-  const viestit = [
-    { teksti: "Mel-kein val-mis-ta!", kuva: "images/koira.png"},
-    { teksti: "Lop-pu-suo-ra!", kuva: "images/krokotiili.png"}
-  ];
-  naytaKannustus(viestit);
+  const kuva = arvoElainKuva();
+  const teksti = loppusuoraTekstit[Math.floor(Math.random() * loppusuoraTekstit.length)];
+  naytaKannustus(kuva, teksti);
 }
 
-function naytaKannustus(vaihtoehdot) {
-  const valinta = vaihtoehdot[Math.floor(Math.random() * vaihtoehdot.length)];
-  const viesti = document.getElementById("kannustusviesti");
+function arvoElainKuva() {
+  const numero = String(getRandomInt(1, 18));
+  return `images/${numero}.png`;
+}
+
+function naytaKannustus(kuvapolku, viestiteksti) {
+  const container = document.getElementById("kannustusviesti");
   const teksti = document.getElementById("kannustus-teksti");
   const elain = document.getElementById("kannustus-elain");
 
-  elain.src = valinta.kuva;
-  teksti.innerText = valinta.teksti;
-  viesti.classList.remove("piilossa");
+  elain.src = kuvapolku;
+  teksti.innerText = viestiteksti;
+  
+  container.classList.remove("piilossa", "poistuva");
 
   function piilotaKannustus() {
-    viesti.classList.add("piilossa");
+    container.classList.add("poistuva");
+
+    // Poistetaan näkyvistä, kun animaatio loppuu
+    setTimeout(() => {
+      container.classList.add("piilossa");
+      container.classList.remove("poistuva");
+    }, 5200);
+
     document.removeEventListener("click", piilotaKannustus);
   }
 
