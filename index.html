@@ -38,7 +38,7 @@
             <div id="vihje" class="piilossa"></div>
             <div id="palaute1"></div>
             <div id="palaute2" class="piilossa">
-                <button id="seuraava-painike" onclick="seuraavaTehtava()">&rightarrow;</button>
+                <button id="seuraava-painike" onclick="seuraavaTehtava()">&triangleright;</button>
                 <h2>HY-VÄ!</h2>
             </div>
             <div id="edistyminen"></div>
@@ -46,15 +46,17 @@
 
         <!-- Kannustusviesti -->
         <div id="kannustusviesti" class="piilossa">
-            <p id="kannustus-teksti"></p>
-            <img id="kannustus-elain">
+            <div id="kannustus-teksti"></div>
+            <img id="kannustus-elain" src="" alt="kannustaja">
         </div>
 
         <!-- Pelin lopetus -->
         <div id="lopetusnakyma" class="piilossa">
             <p>O-let rat-kais-sut kaik-ki teh-tä-vät.</p>
             <h2>Hie-no-a!</h2>
-            <button onclick="location.reload()">PE-LAA UU-DEL-LEEN</button>
+            <div id="voittoelukat"></div>
+            <p>Pe-laa uu-del-leen:</p>
+            <button onclick="location.reload()">▶️</button>
         </div>
         
     </main>

@@ -211,15 +211,39 @@ function voitaPeli() {
   document.getElementById("aloitusnakyma").classList.add("piilossa");
   document.getElementById("lopetusnakyma").classList.remove("piilossa");
 
+  // konfettisade
   for (let i = 0; i < 3; i++) {
     setTimeout(() => {
       confetti({
-          particleCount: 100,
-          spread: 120,
-          origin: { y: 0.4 }
+        particleCount: 100,
+        spread: 120,
+        origin: { y: 0.4 }
       });
     }, i * 500);
   }
+
+  // Eläinten lisääminen (ilman duplikaatteja)
+  const kontti = document.getElementById("voittoelukat");
+  kontti.innerHTML = ""; // tyhjennetään aiemmat
+
+  const valitutPolut = new Set();
+  while (valitutPolut.size < 3) {
+    valitutPolut.add(arvoElainKuva());
+  }
+
+  valitutPolut.forEach(polku => {
+    const elain = document.createElement("img");
+    elain.src = polku;
+    elain.className = "voittoelain";
+
+    // Satunnainen viive ja kesto, jotta pomppivat eri tahdissa
+    const delay = (Math.random() * 0.5).toFixed(2);
+    const kesto = (1.0 + Math.random() * 0.6).toFixed(2);
+    elain.style.animationDelay = `${delay}s`;
+    elain.style.animationDuration = `${kesto}s`;
+
+    kontti.appendChild(elain);
+  });
 }
 
 // Kannustukset
@@ -266,15 +290,23 @@ function naytaKannustus(kuvapolku, viestiteksti) {
   elain.src = kuvapolku;
   teksti.innerText = viestiteksti;
   
-  container.classList.remove("piilossa", "poistuva");
+  container.classList.remove("piilossa", "kannustus-poistuu");
+  container.classList.add("kannustus-saapuu");
 
+  // Pakotetaan reflow (välttämätön joidenkin selainten kanssa)
+  void container.offsetWidth;
+
+  container.classList.remove("kannustus-saapuu");
+  container.classList.add("kannustus-nakyvissa");
+  
   function piilotaKannustus() {
-    container.classList.add("poistuva");
+    container.classList.remove("kannustus-nakyvissa");
+    container.classList.add("kannustus-poistuu");
 
     // Poistetaan näkyvistä, kun animaatio loppuu
     setTimeout(() => {
       container.classList.add("piilossa");
-      container.classList.remove("poistuva");
+      container.classList.remove("kannustus-poistuu");
     }, 1600);
 
     document.removeEventListener("click", piilotaKannustus);
